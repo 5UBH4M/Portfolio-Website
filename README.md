@@ -1,22 +1,24 @@
-# Portfolio Website - Subham Singh
+# Portfolio Website
 
-A personal portfolio website built using HTML, CSS, and JavaScript.
+My personal portfolio website built as part of the WD Internship (Week 6 Final Project).
 
-## Technologies Used
+## Tech Stack
 - HTML5
-- CSS3 (Flexbox, Grid, Media Queries)
-- JavaScript (DOM Manipulation, Events)
+- CSS3
+- JavaScript
 
-## Features
-- Responsive design for all devices
-- Project filtering by category
+## What's Inside
+- About me section
+- Projects showcase with category filter
 - Contact form with validation
 - Dark mode toggle
-- Smooth scrolling navigation
+- Fully responsive (works on mobile, tablet, desktop)
 
-## Live Demo
-[GitHub Pages Link](#)
+## How to Run
+Just open `index.html` in any browser.
 
-## Author
-**Subham Singh**
-WD Week 6 - Final Project
+## Deployment
+Hosted on GitHub Pages — [Live Link](#)
+
+---
+*Subham Singh*
