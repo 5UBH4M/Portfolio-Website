@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subham Singh | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="logo">Subham.</a>
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <button id="theme-toggle" class="theme-btn">🌙</button>
+            <button id="menu-toggle" class="menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">Hi, I am</p>
+            <h1 class="hero-name">Subham Singh</h1>
+            <p class="hero-role">Web Development Intern</p>
+            <a href="#projects" class="hero-btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am a web development intern currently learning HTML, CSS, and JavaScript. Over the past 6 weeks, I have built multiple projects ranging from static webpages to interactive applications.</p>
+                <p>I enjoy turning ideas into working websites and I am always looking to improve my skills by building real projects.</p>
+            </div>
+            <div class="about-info">
+                <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">Subham Singh</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Role</span>
+                    <span class="info-value">WD Intern</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">India</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid" id="skills-grid"></div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="filter-buttons" id="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="html-css">HTML/CSS</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="full-project">Full Project</button>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="contact-name" placeholder="Your Name" required>
+                <p class="form-error" id="name-error"></p>
+            </div>
+            <div class="form-group">
+                <input type="email" id="contact-email" placeholder="Your Email" required>
+                <p class="form-error" id="email-error"></p>
+            </div>
+            <div class="form-group">
+                <textarea id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+                <p class="form-error" id="message-error"></p>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+            <p class="form-success" id="form-success"></p>
+        </form>
+    </section>
+
+    <footer>
+        <p>Subham Singh | WD Internship 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
