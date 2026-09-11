@@ -18,7 +18,7 @@ My personal portfolio website built as part of the WD Internship (Week 6 Final P
 Just open `index.html` in any browser.
 
 ## Deployment
-Hosted on GitHub Pages — [Live Link](#)
+Hosted on GitHub Pages — [Live Link](https://5ubh4m.github.io/Portfolio-Website/)
 
 ---
 *Subham Singh*
