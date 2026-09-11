@@ -49,33 +49,71 @@ let projects = [
     }
 ];
 
+let currentFilter = "all";
+
 let skillsGrid = document.getElementById("skills-grid");
 let projectsGrid = document.getElementById("projects-grid");
 let filterButtons = document.getElementById("filter-buttons");
+let searchInput = document.getElementById("search-input");
 let themeToggle = document.getElementById("theme-toggle");
 let menuToggle = document.getElementById("menu-toggle");
 let navLinks = document.getElementById("nav-links");
 let contactForm = document.getElementById("contact-form");
 let formSuccess = document.getElementById("form-success");
+let skillInput = document.getElementById("skill-input");
+let addSkillBtn = document.getElementById("add-skill-btn");
+let topBtn = document.getElementById("top-btn");
 
 function renderSkills() {
     skillsGrid.innerHTML = "";
     for (let i = 0; i < skills.length; i++) {
         let div = document.createElement("div");
         div.className = "skill-card";
-        div.textContent = skills[i].name;
+
+        let text = document.createElement("span");
+        text.textContent = skills[i].name;
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.className = "skill-delete";
+        deleteBtn.textContent = "✕";
+        deleteBtn.addEventListener("click", function () {
+            skills.splice(i, 1);
+            renderSkills();
+        });
+
+        div.appendChild(text);
+        div.appendChild(deleteBtn);
         skillsGrid.appendChild(div);
     }
 }
 
-function renderProjects(filter) {
+function renderProjects(filter, searchText) {
     projectsGrid.innerHTML = "";
 
     let filtered = projects;
+
     if (filter !== "all") {
-        filtered = projects.filter(function (project) {
+        filtered = filtered.filter(function (project) {
             return project.category === filter;
         });
+    }
+
+    if (searchText && searchText.trim() !== "") {
+        let lower = searchText.toLowerCase();
+        filtered = filtered.filter(function (project) {
+            return project.title.toLowerCase().indexOf(lower) !== -1 ||
+                   project.description.toLowerCase().indexOf(lower) !== -1;
+        });
+    }
+
+    if (filtered.length === 0) {
+        let msg = document.createElement("p");
+        msg.textContent = "No projects found.";
+        msg.style.textAlign = "center";
+        msg.style.color = "#999";
+        msg.style.gridColumn = "1 / -1";
+        projectsGrid.appendChild(msg);
+        return;
     }
 
     for (let i = 0; i < filtered.length; i++) {
@@ -103,6 +141,30 @@ function renderProjects(filter) {
     }
 }
 
+addSkillBtn.addEventListener("click", function () {
+    let value = skillInput.value.trim();
+    if (value.length < 1) return;
+
+    let exists = skills.some(function (skill) {
+        return skill.name.toLowerCase() === value.toLowerCase();
+    });
+
+    if (exists) {
+        skillInput.value = "";
+        return;
+    }
+
+    skills.push({ name: value, category: "custom" });
+    skillInput.value = "";
+    renderSkills();
+});
+
+skillInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        addSkillBtn.click();
+    }
+});
+
 filterButtons.addEventListener("click", function (e) {
     if (e.target.classList.contains("filter-btn")) {
         let allBtns = filterButtons.querySelectorAll(".filter-btn");
@@ -111,9 +173,13 @@ filterButtons.addEventListener("click", function (e) {
         }
         e.target.classList.add("active");
 
-        let filter = e.target.getAttribute("data-filter");
-        renderProjects(filter);
+        currentFilter = e.target.getAttribute("data-filter");
+        renderProjects(currentFilter, searchInput.value);
     }
+});
+
+searchInput.addEventListener("input", function () {
+    renderProjects(currentFilter, searchInput.value);
 });
 
 themeToggle.addEventListener("click", function () {
@@ -176,5 +242,17 @@ contactForm.addEventListener("submit", function (e) {
     }
 });
 
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 300) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+});
+
+topBtn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 renderSkills();
-renderProjects("all");
+renderProjects("all", "");
